@@ -2,10 +2,20 @@
 const inputs = document.querySelectorAll(
     'input[type = "text"], input[type = "password"]'
 );
+//varibales to stcok values entered inputs
+let agent, coordinate, agentSecurity, agentConfirmSecurity;
 
 // functions that will check in real time if inputs are correctly entered
 const agentChecker = (value) =>{
-
+    if (value.length>0 && (value.length <3 || value.length>20)) {
+        errorDisplay("pseudo","agent name must be between 3 and 20 characters",false);
+        pseudo = null;
+    } else if(!value.match(/^[a-zA-Z0-9_.-]*$/)){/*used regex*/
+        errorDisplay("pseudo","agent name must not contain special characters",false);
+        pseudo = null;
+    }else
+    errorDisplay("pseudo", "",true);
+    pseudo = value;
 };
 
 const coordinateChecker = (value) =>{
