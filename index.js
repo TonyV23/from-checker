@@ -4,7 +4,7 @@ const inputs = document.querySelectorAll(
 );
 //varibales to stcok values entered inputs
 let agent, coordinate, agentSecurity, agentConfirmSecurity;
-
+const progressBar = document.getElementById("progress-bar")
 // functions that will check in real time if inputs are correctly entered
 const agentChecker = (value) =>{
     if (value.length>0 && (value.length <3 || value.length>20)) {
@@ -19,7 +19,13 @@ const agentChecker = (value) =>{
 };
 
 const coordinateChecker = (value) =>{
-
+   if (!value.match(/^[\w_-]+@[\w-]+\.[a-z]{2,4}$/i)) {/*used a regex's mail*/
+       errorDisplay("email","coordinate invalid",false);
+       email = null;
+   } else {
+       errorDisplay("email","", true);
+       email = value;
+   } 
 };
 
 const agentSecurityChecker = (value) =>{
