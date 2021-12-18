@@ -12,13 +12,13 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgb(235, 244, 242);
+  background: #c2ebf7c5;;
 }
 form {
   width: 50%;
   min-width: 380px;
   max-width: 600px;
-  background: white;
+  background: #c2ebf7c5;
   display: grid;
   grid-template-rows: repeat(4, 104px);
   padding: 60px 45px 30px;
@@ -84,7 +84,7 @@ p {
 }
 input[type="submit"] {
   border: none;
-  background: linear-gradient(65deg, #16d9e7, #5ef9a4);
+  background: linear-gradient(65deg, #16a5e7, #5ef9ec);
   width: 50%;
   margin: 12px auto 0;
   padding: 10px;
