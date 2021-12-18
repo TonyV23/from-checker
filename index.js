@@ -5,31 +5,47 @@ const inputs = document.querySelectorAll(
 //varibales to stcok values entered inputs
 let agent, coordinate, agentSecurity, agentConfirmSecurity;
 const progressBar = document.getElementById("progress-bar")
+
 // functions that will check in real time if inputs are correctly entered
 const agentChecker = (value) =>{
     if (value.length>0 && (value.length <3 || value.length>20)) {
         errorDisplay("pseudo","agent name must be between 3 and 20 characters",false);
-        pseudo = null;
+        agent = null;
     } else if(!value.match(/^[a-zA-Z0-9_.-]*$/)){/*used regex*/
         errorDisplay("pseudo","agent name must not contain special characters",false);
-        pseudo = null;
+        agent = null;
     }else
     errorDisplay("pseudo", "",true);
-    pseudo = value;
+    agent = value;
 };
 
 const coordinateChecker = (value) =>{
    if (!value.match(/^[\w_-]+@[\w-]+\.[a-z]{2,4}$/i)) {/*used a regex's mail*/
        errorDisplay("email","coordinate invalid",false);
-       email = null;
+       coordinate = null;
    } else {
        errorDisplay("email","", true);
-       email = value;
+       coordinate = value;
    } 
 };
 
-const agentSecurityChecker = (value) =>{
-
+const agentSecurityChecker = (value) =>{ //regex for strong password
+    progressBar.classList = "";
+    if (!value.match(/^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{8,}$/)) {
+      errorDisplay("password","Minimum of 8 characters, one uppercase, one number and one special character",false);
+      progressBar.classList.add("progressRed");
+      agentSecurity = null;
+    } 
+    else if (value.length < 12) {
+      progressBar.classList.add("progressBlue");
+      errorDisplay("password", "", true);
+      agentSecurity = value;
+    } 
+    else{
+        progressBar.classList.add("progressGreen");
+        errorDisplay("password", "", true);
+        agentSecurity = value;
+    }
 };
 
 const agentConfirmChecker = (value) =>{

@@ -109,12 +109,12 @@ input[type="submit"]:hover {
 }
 .progressRed {
   background: red;
-  width: 33%;
+  width: 30%;
   visibility: visible;
 }
 .progressBlue {
   background: #16d9e7;
-  width: 67%;
+  width: 60%;
   visibility: visible;
 }
 .progressGreen {
